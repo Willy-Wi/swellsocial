@@ -1,0 +1,39 @@
+{
+    "project_info": {
+        "project_number": "1056475368",
+        "project_id": "swellsocial-a679d",
+        "storage_bucket": "swellsocial-a679d.appspot.com"
+    },
+    "client": [
+        {
+            "client_info": {
+                "mobilesdk_app_id": "1:1056475368:android:d1a49fcd8a2c7e5309215d",
+                "android_client_info": {
+                    "package_name": "com.example.swellsocial"
+                }
+            },
+            "oauth_client": [
+                {
+                    "client_id": "1056475368-k17agn0586d64h1q2bga8mhrv86jt01t.apps.googleusercontent.com",
+                    "client_type": 3
+                }
+            ],
+            "api_key": [
+                {
+                    "current_key": "AIzaSyBNDMZrvFEukWkx7OjL6GferDDg1vKI-UM"
+                }
+            ],
+            "services": {
+                "appinvite_service": {
+                    "other_platform_oauth_client": [
+                        {
+                            "client_id": "1056475368-k17agn0586d64h1q2bga8mhrv86jt01t.apps.googleusercontent.com",
+                            "client_type": 3
+                        }
+                    ]
+                }
+            }
+        }
+    ],
+    "configuration_version": "1"
+}
