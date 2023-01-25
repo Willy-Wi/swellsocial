@@ -2,6 +2,7 @@ import 'package:android_development/authentication/services/auth.dart';
 import 'package:android_development/follow/pages/follows_page.dart';
 import 'package:android_development/posts/widgets/post_item.dart';
 import 'package:android_development/services/firestore_service.dart';
+import 'package:android_development/widgets/background.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:android_development/constants/color.dart' as colors;
@@ -42,12 +43,7 @@ class _ProfilesPageState extends State<ProfilesPage> {
                     } else if (snapshot.hasData) {
                       UserModel user =
                           UserModel.fromJson(snapshot.data!.docs[0]);
-                      return DecoratedBox(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: const BorderRadius.vertical(
-                                top: Radius.circular(25)),
-                            boxShadow: colors.boxShadow),
+                      return Background(
                         child: Column(
                           children: <Widget>[
                             Padding(
