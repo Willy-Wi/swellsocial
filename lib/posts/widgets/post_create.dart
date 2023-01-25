@@ -18,7 +18,8 @@ class PostCreate extends StatefulWidget {
 class _PostCreateState extends State<PostCreate> {
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = const TextStyle(color: colors.dark);
+    TextTheme textTheme = Theme.of(context).textTheme;
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -67,13 +68,11 @@ class _PostCreateState extends State<PostCreate> {
                               UserModel.fromJson(snapshot.data!.docs[0]);
                           return Text(
                             user.username,
-                            style: textStyle.copyWith(
-                                fontSize: 15, fontWeight: FontWeight.w600),
+                            style: textTheme.titleMedium,
                           );
                         } else if (snapshot.hasError) {
                           return Text('${snapshot.error}',
-                              style: textStyle.copyWith(
-                                  fontSize: 15, fontWeight: FontWeight.w600));
+                              style: textTheme.titleMedium);
                         } else {
                           return Container();
                         }
@@ -84,22 +83,16 @@ class _PostCreateState extends State<PostCreate> {
                     child: SizedBox(),
                   ),
                 ]),
-                subtitle: const Text('12 min ago',
-                    style:
-                        TextStyle(fontSize: 13, fontWeight: FontWeight.w400)),
+                subtitle: Text('12 min ago', style: textTheme.labelLarge),
               ),
 
               TextField(
                 controller: widget.messageController,
                 cursorColor: colors.purple,
                 cursorWidth: 1,
-                decoration: const InputDecoration(
-                  border: InputBorder.none,
+                decoration: InputDecoration(
                   hintText: 'What\'s on your mind?',
-                  hintStyle: TextStyle(
-                      color: colors.dark,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15),
+                  hintStyle: textTheme.labelLarge,
                 ),
               ),
               // AspectRatio(
