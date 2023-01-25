@@ -132,7 +132,7 @@ class DialogListTile extends StatelessWidget {
             width: 24,
             color: redText
                 ? colors.redWarning
-                : themeProvider.themeMode
+                : themeProvider.isDarkMode
                     ? colors.white
                     : colors.dark),
         title: Text(text,

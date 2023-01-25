@@ -31,11 +31,9 @@ class _InputFieldState extends State<InputField> {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 5),
       decoration: BoxDecoration(
-        color: themeProvider.themeMode ? colors.darkBackground : colors.white,
+        color: themeProvider.isDarkMode ? colors.darkBackground : colors.white,
         borderRadius: BorderRadius.circular(10),
-        boxShadow: themeProvider.themeMode
-            ? null
-            : colors.greyBoxShadow,
+        boxShadow: themeProvider.isDarkMode ? null : colors.greyBoxShadow,
       ),
       child: Center(
         child: TextField(
@@ -43,23 +41,23 @@ class _InputFieldState extends State<InputField> {
           style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
-              color: themeProvider.themeMode ? colors.white : colors.purple),
+              color: themeProvider.isDarkMode ? colors.white : colors.purple),
           controller: widget.controller,
-          cursorColor: themeProvider.themeMode ? colors.white : colors.purple,
+          cursorColor: themeProvider.isDarkMode ? colors.white : colors.purple,
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.all(20),
             prefixIcon: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: SvgPicture.asset(widget.iconPath,
                   width: 24,
-                  color: themeProvider.themeMode ? colors.white : colors.dark),
+                  color: themeProvider.isDarkMode ? colors.white : colors.dark),
             ),
             border: InputBorder.none,
             hintText: widget.hintText,
             hintStyle: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.bold,
-                color: themeProvider.themeMode
+                color: themeProvider.isDarkMode
                     ? const Color.fromARGB(255, 160, 160, 160)
                     : colors.grey),
           ),

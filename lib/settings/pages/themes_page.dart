@@ -38,7 +38,7 @@ class _ThemesPageState extends State<ThemesPage> {
                     SettingsNavigationItem(
                       text: 'Dark Mode',
                       action: Switch(
-                          value: themeProvider.themeMode,
+                          value: themeProvider.isDarkMode,
                           activeTrackColor: colors.greenDarker,
                           activeColor: colors.green,
                           onChanged: (value) {

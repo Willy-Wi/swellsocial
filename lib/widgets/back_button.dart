@@ -19,11 +19,9 @@ class Back extends StatelessWidget {
         DecoratedBox(
           decoration: BoxDecoration(
             color:
-                themeProvider.themeMode ? colors.darkBackground : colors.white,
+                themeProvider.isDarkMode ? colors.darkBackground : colors.white,
             shape: BoxShape.circle,
-            boxShadow: themeProvider.themeMode
-                ? null
-                : colors.greyBoxShadow,
+            boxShadow: themeProvider.isDarkMode ? null : colors.greyBoxShadow,
           ),
           child: Material(
             shape: const CircleBorder(),

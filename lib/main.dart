@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:android_development/constants/color.dart' as colors;
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 // pages
 import 'authentication/pages/login_page.dart';
 import 'authentication/pages/sign_up_page.dart';
@@ -22,9 +23,10 @@ import 'authentication/pages/auth_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  final prefs = await SharedPreferences.getInstance();
   runApp(
     ChangeNotifierProvider(
-      create: (BuildContext context) => ThemeProvider(),
+      create: (BuildContext context) => ThemeProvider(darkMode: prefs.getBool('darkMode')),
       child: const MyApp(),
     ),
   );
@@ -78,7 +80,7 @@ class _MyAppState extends State<MyApp> {
         ),
         brightness: Brightness.dark,
       ),
-      themeMode: themeProvider.themeMode ? ThemeMode.dark : ThemeMode.light,
+      themeMode: themeProvider.isDarkMode ? ThemeMode.dark : ThemeMode.light,
       home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {

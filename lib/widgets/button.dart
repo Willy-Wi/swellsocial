@@ -24,13 +24,11 @@ class Button extends StatelessWidget {
         gradient: useAccentColor ? colors.purpleGreenGradient : null,
         color: useAccentColor
             ? null
-            : themeProvider.themeMode
+            : themeProvider.isDarkMode
                 ? colors.darkBackground
                 : colors.white,
         borderRadius: BorderRadius.circular(5),
-        boxShadow: themeProvider.themeMode
-            ? null
-            : colors.greyBoxShadow,
+        boxShadow: themeProvider.isDarkMode ? null : colors.greyBoxShadow,
       ),
       width: double.infinity,
       child: ElevatedButton(
@@ -38,7 +36,7 @@ class Button extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 20),
           foregroundColor: useAccentColor
               ? colors.white
-              : themeProvider.themeMode
+              : themeProvider.isDarkMode
                   ? colors.white
                   : colors.purple,
           backgroundColor: Colors.transparent,

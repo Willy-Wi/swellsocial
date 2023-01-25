@@ -163,7 +163,7 @@ class _HomePageState extends State<HomePage> {
         ),
         floatingActionButton: FloatingActionButton(
             splashColor: colors.purpleSplashRipple,
-            backgroundColor: themeProvider.themeMode ? null : colors.white,
+            backgroundColor: themeProvider.isDarkMode ? null : colors.white,
             foregroundColor: colors.purple,
             onPressed: () => Navigator.pushNamed(context, '/post_create'),
             child: SvgPicture.asset('assets/icons/add_purple.svg')),

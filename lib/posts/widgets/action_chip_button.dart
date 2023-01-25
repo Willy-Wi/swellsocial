@@ -35,7 +35,7 @@ class _ActionChipButtonState extends State<ActionChipButton> {
       label: Row(
         children: [
           SvgPicture.asset('assets/icons/${widget.icon}.svg',
-              color: themeProvider.themeMode ? colors.white : colors.dark),
+              color: themeProvider.isDarkMode ? colors.white : colors.dark),
           const SizedBox(width: 5),
           Text(widget.label),
         ],
