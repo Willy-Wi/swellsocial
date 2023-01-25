@@ -15,6 +15,8 @@ class NotificationItem extends StatefulWidget {
 class _NotificationItemState extends State<NotificationItem> {
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
+
     return Container(
       margin: const EdgeInsets.only(bottom: 20.0),
       child: Row(
@@ -41,11 +43,7 @@ class _NotificationItemState extends State<NotificationItem> {
               widget.notification,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w500,
-                color: colors.grey,
-              ),
+              style: textTheme.labelLarge,
             ),
           ),
           //

@@ -2,6 +2,8 @@ import 'package:android_development/settings/widgets/settings_navigation_item.da
 import 'package:android_development/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:android_development/constants/color.dart' as colors;
+import 'package:provider/provider.dart';
+import '../../services/theme_provider.dart';
 import '../../widgets/back_button.dart';
 
 class ThemesPage extends StatefulWidget {
@@ -12,9 +14,12 @@ class ThemesPage extends StatefulWidget {
 }
 
 class _ThemesPageState extends State<ThemesPage> {
-  bool isSwitched = false;
+  bool isDark = false;
+
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -33,13 +38,11 @@ class _ThemesPageState extends State<ThemesPage> {
                     SettingsNavigationItem(
                       text: 'Dark Mode',
                       action: Switch(
-                          value: isSwitched,
+                          value: themeProvider.themeMode,
                           activeTrackColor: colors.greenDarker,
                           activeColor: colors.green,
                           onChanged: (value) {
-                            setState(() {
-                              isSwitched = value;
-                            });
+                            themeProvider.swapTheme();
                           }),
                     ),
                     const Divider(),

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:android_development/constants/color.dart' as colors;
+import 'package:provider/provider.dart';
+
+import '../services/theme_provider.dart';
 
 class Button extends StatelessWidget {
   const Button(
@@ -14,24 +17,36 @@ class Button extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+
     return Container(
       decoration: BoxDecoration(
         gradient: useAccentColor ? colors.purpleGreenGradient : null,
-        color: useAccentColor ? null : colors.white,
+        color: useAccentColor
+            ? null
+            : themeProvider.themeMode
+                ? colors.darkBackground
+                : colors.white,
         borderRadius: BorderRadius.circular(5),
-        boxShadow: const [
-          BoxShadow(
-            blurRadius: 4,
-            offset: Offset(1, 2),
-            color: colors.purpleShadow,
-          )
-        ],
+        boxShadow: themeProvider.themeMode
+            ? null
+            : [
+                const BoxShadow(
+                  blurRadius: 4,
+                  offset: Offset(1, 2),
+                  color: colors.purpleShadow,
+                )
+              ],
       ),
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           padding: const EdgeInsets.symmetric(vertical: 20),
-          foregroundColor: useAccentColor ? colors.white : colors.purple,
+          foregroundColor: useAccentColor
+              ? colors.white
+              : themeProvider.themeMode
+                  ? colors.white
+                  : colors.purple,
           backgroundColor: Colors.transparent,
           shadowColor: Colors.transparent,
         ),

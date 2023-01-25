@@ -22,7 +22,7 @@ class ProfilesPage extends StatefulWidget {
 class _ProfilesPageState extends State<ProfilesPage> {
   @override
   Widget build(BuildContext context) {
-    const TextStyle textStyle = TextStyle(color: colors.dark);
+    TextTheme textTheme = Theme.of(context).textTheme;
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -64,18 +64,10 @@ class _ProfilesPageState extends State<ProfilesPage> {
                                     ),
                                     title: Text(
                                       user.username,
-                                      style: textStyle.copyWith(
-                                        fontWeight: FontWeight.w600,
-                                        fontSize: 15,
-                                      ),
+                                      style: textTheme.titleMedium,
                                     ),
-                                    subtitle: Text(
-                                      '@${user.username}',
-                                      style: textStyle.copyWith(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 14,
-                                      ),
-                                    ),
+                                    subtitle: Text('@${user.username}',
+                                        style: textTheme.labelLarge),
                                     trailing: const FollowButton(),
                                   ),
                                   const SizedBox(height: 20),
@@ -125,12 +117,9 @@ class _ProfilesPageState extends State<ProfilesPage> {
                                     alignment: Alignment.centerLeft,
                                     child: Column(
                                       children: [
-                                        const Text(
+                                        Text(
                                           'Posts',
-                                          style: TextStyle(
-                                              color: colors.dark,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 15),
+                                          style: textTheme.titleMedium,
                                         ),
                                         const SizedBox(height: 2),
                                         Container(

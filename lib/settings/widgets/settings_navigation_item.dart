@@ -22,6 +22,7 @@ class SettingsNavigationItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = const TextStyle(color: colors.dark);
+    TextTheme textTheme = Theme.of(context).textTheme;
 
     return ListTile(
         contentPadding: iconPath == null
@@ -34,14 +35,10 @@ class SettingsNavigationItem extends StatelessWidget {
                 backgroundColor: color,
                 child: SvgPicture.asset(iconPath!,
                     width: 24, color: colors.white)),
-        title: Text(text,
-            style:
-                textStyle.copyWith(fontSize: 15, fontWeight: FontWeight.w600)),
+        title: Text(text, style: textTheme.titleMedium),
         subtitle: subtitle == null
             ? null
-            : Text(subtitle!,
-                style: textStyle.copyWith(
-                    fontSize: 14, fontWeight: FontWeight.w400)),
+            : Text(subtitle!, style: textTheme.labelLarge),
         trailing: action,
         onTap: () => page == null
             ? null

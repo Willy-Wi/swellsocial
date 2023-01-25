@@ -26,7 +26,7 @@ class _AuthPageState extends State<AuthPage> {
                 boxShadow: [
                   BoxShadow(
                     blurRadius: 3,
-                    color: colors.greyBackground,
+                    color: colors.greyLowOpacityBackground,
                     offset: Offset(1, 2),
                   )
                 ],

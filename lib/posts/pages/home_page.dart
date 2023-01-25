@@ -1,10 +1,13 @@
+import 'package:android_development/widgets/background.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:android_development/constants/color.dart' as colors;
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../authentication/models/user_model.dart';
 import '../../services/firestore_service.dart';
+import '../../services/theme_provider.dart';
 import '../models/post_model.dart';
 import '../widgets/custom_dialog.dart';
 import '../widgets/post_item.dart';
@@ -37,6 +40,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     return SafeArea(
       child: Scaffold(
         body: ListView(
@@ -56,7 +60,7 @@ class _HomePageState extends State<HomePage> {
                                 boxShadow: [
                                   BoxShadow(
                                       blurRadius: 3,
-                                      color: colors.greyBackground,
+                                      color: colors.greyLowOpacityBackground,
                                       offset: Offset(1, 2))
                                 ]),
                             child: Image.asset(
@@ -117,14 +121,7 @@ class _HomePageState extends State<HomePage> {
                             strokeWidth: 2, color: colors.purple)),
                   );
                 } else if (snapshot.hasData) {
-                  return DecoratedBox(
-                    decoration: BoxDecoration(
-                      color: colors.white,
-                      borderRadius: const BorderRadius.vertical(
-                        top: Radius.circular(25),
-                      ),
-                      boxShadow: colors.boxShadow,
-                    ),
+                  return Background(
                     child: ListView.separated(
                       itemCount: snapshot.data!.docs.length,
                       shrinkWrap: true,
@@ -170,8 +167,8 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-            backgroundColor: colors.white,
             splashColor: colors.purpleSplashRipple,
+            backgroundColor: themeProvider.themeMode ? null : colors.white,
             foregroundColor: colors.purple,
             onPressed: () => Navigator.pushNamed(context, '/post_create'),
             child: SvgPicture.asset('assets/icons/add_purple.svg')),

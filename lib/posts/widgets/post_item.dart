@@ -15,7 +15,8 @@ class PostItem extends StatefulWidget {
 class _PostItemState extends State<PostItem> {
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = const TextStyle(color: colors.dark);
+    TextTheme textTheme = Theme.of(context).textTheme;
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -57,16 +58,14 @@ class _PostItemState extends State<PostItem> {
                   onTap: () {},
                   child: Text(
                     widget.username,
-                    style: textStyle.copyWith(
-                        fontSize: 15, fontWeight: FontWeight.w600),
+                    style: textTheme.titleMedium,
                   ),
                 ),
                 const Expanded(
                   child: SizedBox(),
                 ),
               ]),
-              subtitle: const Text('12 min ago',
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400)),
+              subtitle: Text('12 min ago', style: textTheme.labelLarge),
               // trailing: Material(
               //   color: Colors.transparent,
               //   shape: const CircleBorder(),
@@ -87,11 +86,7 @@ class _PostItemState extends State<PostItem> {
             // Body
             Align(
               alignment: Alignment.centerLeft,
-              child: Text(widget.message,
-                  style: const TextStyle(
-                      color: colors.dark,
-                      fontWeight: FontWeight.w500,
-                      fontSize: 15)),
+              child: Text(widget.message, style: textTheme.labelLarge),
             ),
             const SizedBox(height: 15),
             // Image

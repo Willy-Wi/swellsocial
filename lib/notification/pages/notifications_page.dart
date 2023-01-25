@@ -1,6 +1,6 @@
 import 'package:android_development/notification/widgets/notification_item.dart';
+import 'package:android_development/widgets/background.dart';
 import 'package:flutter/material.dart';
-import 'package:android_development/constants/color.dart' as colors;
 import '../../widgets/back_button.dart';
 
 class NotificationsPage extends StatelessWidget {
@@ -8,11 +8,7 @@ class NotificationsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = const TextStyle(
-      color: colors.grey,
-      fontSize: 16,
-      fontWeight: FontWeight.w600,
-    );
+    TextTheme textTheme = Theme.of(context).textTheme;
 
     return SafeArea(
       child: Scaffold(
@@ -23,13 +19,7 @@ class NotificationsPage extends StatelessWidget {
               child: Back(label: 'Notifications'),
             ),
             Expanded(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(25)),
-                  boxShadow: colors.boxShadow,
-                ),
+              child: Background(
                 child: Padding(
                   padding: const EdgeInsets.only(
                       top: 25.0, left: 25.0, bottom: 15.0, right: 15.0),
@@ -40,7 +30,7 @@ class NotificationsPage extends StatelessWidget {
                         //
                         Text(
                           'Today',
-                          style: textStyle,
+                          style: textTheme.titleMedium,
                         ),
                         //
                         const SizedBox(
@@ -57,7 +47,7 @@ class NotificationsPage extends StatelessWidget {
                         //
                         Text(
                           'This Week',
-                          style: textStyle,
+                          style: textTheme.titleMedium,
                         ),
                         //
                         const SizedBox(

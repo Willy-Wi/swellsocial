@@ -14,6 +14,8 @@ class _FollowButtonState extends State<FollowButton> {
 
   @override
   Widget build(BuildContext context) {
+    TextTheme textTheme = Theme.of(context).textTheme;
+
     return Container(
       decoration: BoxDecoration(
           color: isFollowing ? Colors.white : colors.green,
@@ -42,16 +44,14 @@ class _FollowButtonState extends State<FollowButton> {
                       isFollowing
                           ? 'assets/icons/check.svg'
                           : 'assets/icons/add_purple.svg',
-                      width: 18),
+                      width: 20),
                   const SizedBox(
                     width: 10,
                   ),
                   Text(
                     isFollowing ? 'Following' : 'Follow',
-                    style: const TextStyle(
-                        color: colors.purple,
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500),
+                    style:
+                        textTheme.titleMedium!.copyWith(color: colors.purple),
                   ),
                 ],
               ),

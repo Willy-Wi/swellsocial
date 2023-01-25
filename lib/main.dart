@@ -1,8 +1,11 @@
 import 'package:android_development/posts/pages/post_create_page.dart';
+import 'package:android_development/services/theme_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:android_development/constants/color.dart' as colors;
+import 'package:provider/provider.dart';
 // pages
 import 'authentication/pages/login_page.dart';
 import 'authentication/pages/sign_up_page.dart';
@@ -19,14 +22,26 @@ import 'authentication/pages/auth_page.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (BuildContext context) => ThemeProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+
     return MaterialApp(
       routes: {
         '/login': (BuildContext context) => const LoginPage(),
@@ -42,8 +57,28 @@ class MyApp extends StatelessWidget {
         '/post_create': (BuildContext context) => const PostCreatePage(),
       },
       theme: ThemeData(
-        textTheme: GoogleFonts.quicksandTextTheme(),
+        textTheme: GoogleFonts.quicksandTextTheme(
+          const TextTheme(
+            titleMedium: TextStyle(
+                color: colors.dark, fontWeight: FontWeight.w600, fontSize: 15),
+            labelLarge: TextStyle(
+                color: colors.dark, fontWeight: FontWeight.w400, fontSize: 14),
+          ),
+        ),
+        brightness: Brightness.light,
       ),
+      darkTheme: ThemeData(
+        textTheme: GoogleFonts.quicksandTextTheme(
+          const TextTheme(
+            titleMedium: TextStyle(
+                color: colors.white, fontWeight: FontWeight.w600, fontSize: 15),
+            labelLarge: TextStyle(
+                color: colors.white, fontWeight: FontWeight.w400, fontSize: 14),
+          ),
+        ),
+        brightness: Brightness.dark,
+      ),
+      themeMode: themeProvider.themeMode ? ThemeMode.dark : ThemeMode.light,
       home: StreamBuilder(
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {

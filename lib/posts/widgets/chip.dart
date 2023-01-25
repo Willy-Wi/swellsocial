@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:android_development/constants/color.dart' as colors;
 
 class CustomChip extends StatelessWidget {
   const CustomChip(
@@ -14,12 +13,11 @@ class CustomChip extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const TextStyle textStyle = TextStyle(color: colors.dark, fontSize: 14);
+    TextTheme textTheme = Theme.of(context).textTheme;
     return Material(
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(50),
       ),
-      color: colors.greyBackground,
       child: InkWell(
         customBorder: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(50),
@@ -29,11 +27,9 @@ class CustomChip extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
           child: Row(
             children: <Widget>[
-              Text(count,
-                  style: textStyle.copyWith(fontWeight: FontWeight.w600)),
+              Text(count, style: textTheme.titleMedium),
               const SizedBox(width: 7),
-              Text(label,
-                  style: textStyle.copyWith(fontWeight: FontWeight.w400)),
+              Text(label, style: textTheme.labelLarge),
             ],
           ),
         ),

@@ -2,17 +2,19 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:android_development/constants/color.dart' as colors;
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 import '../../authentication/models/user_model.dart';
 import '../../authentication/services/auth.dart';
 import '../../services/firestore_service.dart';
+import '../../services/theme_provider.dart';
 
 class CustomDialog extends StatelessWidget {
   const CustomDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = const TextStyle(color: colors.dark);
+    TextTheme textTheme = Theme.of(context).textTheme;
 
     return Dialog(
       alignment: Alignment.bottomCenter,
@@ -42,13 +44,11 @@ class CustomDialog extends StatelessWidget {
 
                     return Text(
                       user.username,
-                      style: textStyle.copyWith(
-                          fontSize: 15, fontWeight: FontWeight.w600),
+                      style: textTheme.titleMedium,
                     );
                   } else if (snapshot.hasError) {
                     return Text('${snapshot.error}',
-                        style: textStyle.copyWith(
-                            fontSize: 15, fontWeight: FontWeight.w600));
+                        style: textTheme.titleMedium);
                   } else {
                     return Container();
                   }
@@ -63,13 +63,11 @@ class CustomDialog extends StatelessWidget {
 
                     return Text(
                       '@${user.username}',
-                      style: textStyle.copyWith(
-                          fontSize: 14, fontWeight: FontWeight.w400),
+                      style: textTheme.labelLarge,
                     );
                   } else if (snapshot.hasError) {
                     return Text('${snapshot.error}',
-                        style: textStyle.copyWith(
-                            fontSize: 14, fontWeight: FontWeight.w400));
+                        style: textTheme.labelLarge);
                   } else {
                     return Container();
                   }
@@ -126,9 +124,17 @@ class DialogListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+
     return ListTile(
         visualDensity: const VisualDensity(vertical: -2.0),
-        leading: SvgPicture.asset('assets/icons/$icon.svg', width: 24),
+        leading: SvgPicture.asset('assets/icons/$icon.svg',
+            width: 24,
+            color: redText
+                ? colors.redWarning
+                : themeProvider.themeMode
+                    ? colors.white
+                    : colors.dark),
         title: Text(text,
             style: redText ? const TextStyle(color: colors.redWarning) : null),
         onTap: onTap);

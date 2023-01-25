@@ -36,7 +36,6 @@ class _PostCreatePageState extends State<PostCreatePage> {
           ],
         ),
         floatingActionButton: FloatingActionButton(
-            backgroundColor: colors.white,
             splashColor: colors.purpleSplashRipple,
             onPressed: () {
               String message = messageController.text;

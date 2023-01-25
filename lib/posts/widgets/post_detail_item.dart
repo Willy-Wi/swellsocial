@@ -16,7 +16,8 @@ class PostDetailItem extends StatefulWidget {
 class _PostDetailItemState extends State<PostDetailItem> {
   @override
   Widget build(BuildContext context) {
-    TextStyle textStyle = const TextStyle(color: colors.dark);
+    TextTheme textTheme = Theme.of(context).textTheme;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
       child: Column(children: [
@@ -44,16 +45,14 @@ class _PostDetailItemState extends State<PostDetailItem> {
               onTap: () {},
               child: Text(
                 widget.username,
-                style: textStyle.copyWith(
-                    fontSize: 15, fontWeight: FontWeight.w600),
+                style: textTheme.titleMedium,
               ),
             ),
             const Expanded(
               child: SizedBox(),
             ),
           ]),
-          subtitle: const Text('12 min ago',
-              style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400)),
+          subtitle: Text('12 min ago', style: textTheme.labelLarge),
           trailing: Row(mainAxisSize: MainAxisSize.min, children: [
             ActionChipButton(icon: 'like_false', onPressed: () {}, label: '40'),
             const SizedBox(width: 10),
@@ -63,11 +62,7 @@ class _PostDetailItemState extends State<PostDetailItem> {
         const SizedBox(height: 15),
         Align(
           alignment: Alignment.centerLeft,
-          child: Text(widget.message,
-              style: const TextStyle(
-                  color: colors.dark,
-                  fontWeight: FontWeight.w500,
-                  fontSize: 15)),
+          child: Text(widget.message, style: textTheme.titleMedium),
         ),
         const SizedBox(height: 15),
         // Image
