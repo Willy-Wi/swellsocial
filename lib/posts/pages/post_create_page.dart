@@ -2,8 +2,10 @@ import 'package:android_development/posts/models/post_model.dart';
 import 'package:android_development/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 import '../../authentication/services/auth.dart';
 import '../../services/firestore_service.dart';
+import '../../services/theme_provider.dart';
 import '../../widgets/back_button.dart';
 import 'package:android_development/constants/color.dart' as colors;
 
@@ -21,6 +23,7 @@ class _PostCreatePageState extends State<PostCreatePage> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
     return SafeArea(
       child: Scaffold(
         resizeToAvoidBottomInset: false,
@@ -36,6 +39,7 @@ class _PostCreatePageState extends State<PostCreatePage> {
           ],
         ),
         floatingActionButton: FloatingActionButton(
+            backgroundColor: themeProvider.isDarkMode ? null : colors.white,
             splashColor: colors.purpleSplashRipple,
             onPressed: () {
               String message = messageController.text;

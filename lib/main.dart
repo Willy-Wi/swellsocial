@@ -26,7 +26,8 @@ Future<void> main() async {
   final prefs = await SharedPreferences.getInstance();
   runApp(
     ChangeNotifierProvider(
-      create: (BuildContext context) => ThemeProvider(darkMode: prefs.getBool('darkMode')),
+      create: (BuildContext context) =>
+          ThemeProvider(darkMode: prefs.getBool('darkMode')),
       child: const MyApp(),
     ),
   );
@@ -59,6 +60,7 @@ class _MyAppState extends State<MyApp> {
         '/post_create': (BuildContext context) => const PostCreatePage(),
       },
       theme: ThemeData(
+        // scaffoldBackgroundColor: colors.white,
         textTheme: GoogleFonts.quicksandTextTheme(
           const TextTheme(
             titleMedium: TextStyle(

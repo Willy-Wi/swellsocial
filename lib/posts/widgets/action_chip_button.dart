@@ -29,7 +29,9 @@ class _ActionChipButtonState extends State<ActionChipButton> {
     return ActionChip(
       pressElevation: 0,
       side: const BorderSide(color: colors.greyShadow, width: 0.5),
-      backgroundColor: colors.greyLowOpacityBackground,
+      backgroundColor: themeProvider.isDarkMode
+          ? colors.greyLowOpacityBackground
+          : const Color(0x00FFFFFF),
       labelStyle: textTheme.labelLarge,
       onPressed: widget.onPressed,
       label: Row(

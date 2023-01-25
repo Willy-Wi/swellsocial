@@ -126,6 +126,7 @@ class DialogListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+    TextTheme textTheme = Theme.of(context).textTheme;
 
     return ListTile(
         visualDensity: const VisualDensity(vertical: -1),
@@ -136,8 +137,17 @@ class DialogListTile extends StatelessWidget {
                 : themeProvider.isDarkMode
                     ? colors.white
                     : colors.dark),
-        title: Text(text,
-            style: redText ? const TextStyle(color: colors.redWarning) : null),
+        title: Text(
+          text,
+          style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w400,
+              color: redText
+                  ? colors.redWarning
+                  : themeProvider.isDarkMode
+                      ? colors.white
+                      : colors.dark),
+        ),
         onTap: onTap);
   }
 }
