@@ -23,7 +23,7 @@ class CustomDialog extends StatelessWidget {
       ),
       insetPadding: const EdgeInsets.all(15),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 15.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
@@ -77,6 +77,7 @@ class CustomDialog extends StatelessWidget {
                 Navigator.pushNamed(context, '/profile');
               },
             ),
+            const SizedBox(height: 5),
             const Divider(),
             DialogListTile(
                 icon: 'notification',
@@ -127,7 +128,7 @@ class DialogListTile extends StatelessWidget {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
 
     return ListTile(
-        visualDensity: const VisualDensity(vertical: -2.0),
+        visualDensity: const VisualDensity(vertical: -1),
         leading: SvgPicture.asset('assets/icons/$icon.svg',
             width: 24,
             color: redText
