@@ -84,6 +84,7 @@ class _PostItemState extends State<PostItem> {
               // ),
             ),
             // Body
+            const SizedBox(height: 10),
             Align(
               alignment: Alignment.centerLeft,
               child: Text(widget.message, style: textTheme.labelLarge),
