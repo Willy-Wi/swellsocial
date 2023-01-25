@@ -30,13 +30,7 @@ class Button extends StatelessWidget {
         borderRadius: BorderRadius.circular(5),
         boxShadow: themeProvider.themeMode
             ? null
-            : [
-                const BoxShadow(
-                  blurRadius: 4,
-                  offset: Offset(1, 2),
-                  color: colors.purpleShadow,
-                )
-              ],
+            : colors.greyBoxShadow,
       ),
       width: double.infinity,
       child: ElevatedButton(

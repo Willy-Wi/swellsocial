@@ -17,7 +17,7 @@ class Background extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.vertical(top: Radius.circular(25)),
         color: themeProvider.themeMode ? colors.darkBackground : colors.white,
-        boxShadow: colors.boxShadow,
+        boxShadow: themeProvider.themeMode ? null : colors.purpleBoxShadow,
       ),
       child: child,
     );

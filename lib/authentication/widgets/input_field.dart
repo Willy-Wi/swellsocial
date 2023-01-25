@@ -35,13 +35,7 @@ class _InputFieldState extends State<InputField> {
         borderRadius: BorderRadius.circular(10),
         boxShadow: themeProvider.themeMode
             ? null
-            : [
-                const BoxShadow(
-                  blurRadius: 5,
-                  offset: Offset(1, 2),
-                  color: colors.greyShadow,
-                ),
-              ],
+            : colors.greyBoxShadow,
       ),
       child: Center(
         child: TextField(

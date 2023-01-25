@@ -21,15 +21,9 @@ class _AuthPageState extends State<AuthPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    blurRadius: 3,
-                    color: colors.greyLowOpacityBackground,
-                    offset: Offset(1, 2),
-                  )
-                ],
+                boxShadow: colors.greyBoxShadow,
               ),
               child: Image.asset('assets/logo/swell_social_logo_big.png',
                   width: 300),

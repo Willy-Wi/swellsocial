@@ -55,14 +55,9 @@ class _HomePageState extends State<HomePage> {
                         backgroundColor: Colors.transparent,
                         radius: 30,
                         child: Container(
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                                 shape: BoxShape.circle,
-                                boxShadow: [
-                                  BoxShadow(
-                                      blurRadius: 3,
-                                      color: colors.greyLowOpacityBackground,
-                                      offset: Offset(1, 2))
-                                ]),
+                                boxShadow: colors.greyBoxShadow),
                             child: Image.asset(
                                 'assets/logo/swell_social_logo.png'))),
                     CircleAvatar(

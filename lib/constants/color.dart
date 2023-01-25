@@ -8,11 +8,19 @@ const LinearGradient purpleGreenGradient = LinearGradient(
       green,
     ]);
 
-List<BoxShadow>? boxShadow = [
+List<BoxShadow>? purpleBoxShadow = [
   const BoxShadow(
     color: purpleShadow,
     blurRadius: 5,
     offset: Offset(1, -1),
+  )
+];
+
+List<BoxShadow>? greyBoxShadow = [
+  const BoxShadow(
+    color: greyLowOpacityBackground,
+    blurRadius: 3,
+    offset: Offset(1, 2),
   )
 ];
 

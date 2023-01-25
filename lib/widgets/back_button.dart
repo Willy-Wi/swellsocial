@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:android_development/constants/color.dart' as colors;
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
+
+import '../services/theme_provider.dart';
 
 class Back extends StatelessWidget {
   const Back({super.key, this.label});
@@ -9,19 +12,18 @@ class Back extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
+
     return Row(
       children: [
         DecoratedBox(
-          decoration: const BoxDecoration(
-            color: Colors.white,
+          decoration: BoxDecoration(
+            color:
+                themeProvider.themeMode ? colors.darkBackground : colors.white,
             shape: BoxShape.circle,
-            boxShadow: [
-              BoxShadow(
-                blurRadius: 5,
-                color: colors.purpleShadow,
-                offset: Offset(1, 2),
-              )
-            ],
+            boxShadow: themeProvider.themeMode
+                ? null
+                : colors.greyBoxShadow,
           ),
           child: Material(
             shape: const CircleBorder(),

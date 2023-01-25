@@ -64,10 +64,10 @@ class _AccountsPageState extends State<AccountsPage> {
                     ),
                     const Divider(),
                     SettingsNavigationItem(
-                      text: 'Display Name',
+                      text: 'Change Username',
                       action: Container(
                         padding: const EdgeInsets.symmetric(vertical: 7),
-                        width: 200,
+                        width: 175,
                         child: TextField(
                           controller: displayNameController,
                           style: const TextStyle(

@@ -32,7 +32,7 @@ class _FollowsPageState extends State<FollowsPage> {
                     color: Colors.white,
                     borderRadius:
                         const BorderRadius.vertical(top: Radius.circular(25)),
-                    boxShadow: colors.boxShadow),
+                    boxShadow: colors.purpleBoxShadow),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(
                       horizontal: 25.0, vertical: 20.0),
