@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:android_development/constants/color.dart' as colors;
 import '../../services/firestore_service.dart';
 import '../../widgets/back_button.dart';
+import '../../widgets/background.dart';
 
 class AccountsPage extends StatefulWidget {
   const AccountsPage({super.key});
@@ -25,12 +26,7 @@ class _AccountsPageState extends State<AccountsPage> {
               child: Back(label: 'Account'),
             ),
             Expanded(
-              child: DecoratedBox(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          const BorderRadius.vertical(top: Radius.circular(25)),
-                      boxShadow: colors.boxShadow),
+              child: Background(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         horizontal: 25.0, vertical: 20),

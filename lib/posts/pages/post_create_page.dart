@@ -1,4 +1,5 @@
 import 'package:android_development/posts/models/post_model.dart';
+import 'package:android_development/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../authentication/services/auth.dart';
@@ -28,13 +29,7 @@ class _PostCreatePageState extends State<PostCreatePage> {
             const Padding(
                 padding: EdgeInsets.all(25), child: Back(label: 'Create')),
             Expanded(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(25)),
-                  color: Colors.white,
-                  boxShadow: colors.boxShadow,
-                ),
+              child: Background(
                 child: PostCreate(messageController: messageController),
               ),
             ),

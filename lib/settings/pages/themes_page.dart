@@ -1,4 +1,5 @@
 import 'package:android_development/settings/widgets/settings_navigation_item.dart';
+import 'package:android_development/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:android_development/constants/color.dart' as colors;
 import '../../widgets/back_button.dart';
@@ -23,33 +24,28 @@ class _ThemesPageState extends State<ThemesPage> {
               child: Back(label: 'Themes'),
             ),
             Expanded(
-              child: DecoratedBox(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          const BorderRadius.vertical(top: Radius.circular(25)),
-                      boxShadow: colors.boxShadow),
+              child: Background(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 25.0, vertical: 20),
-                    child: Column(
-                      children: <Widget>[
-                        SettingsNavigationItem(
-                          text: 'Dark Mode',
-                          action: Switch(
-                              value: isSwitched,
-                              activeTrackColor: colors.greenDarker,
-                              activeColor: colors.green,
-                              onChanged: (value) {
-                                setState(() {
-                                  isSwitched = value;
-                                });
-                              }),
-                        ),
-                        const Divider(),
-                      ],
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 25.0, vertical: 20),
+                child: Column(
+                  children: <Widget>[
+                    SettingsNavigationItem(
+                      text: 'Dark Mode',
+                      action: Switch(
+                          value: isSwitched,
+                          activeTrackColor: colors.greenDarker,
+                          activeColor: colors.green,
+                          onChanged: (value) {
+                            setState(() {
+                              isSwitched = value;
+                            });
+                          }),
                     ),
-                  )),
+                    const Divider(),
+                  ],
+                ),
+              )),
             ),
           ],
         ),

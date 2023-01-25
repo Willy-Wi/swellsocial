@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:android_development/posts/arguments/argument.dart';
+import 'package:android_development/widgets/background.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/back_button.dart';
 import 'package:android_development/constants/color.dart' as colors;
@@ -26,13 +27,7 @@ class _PostDetailPageState extends State<PostDetailPage> {
             const Padding(
                 padding: EdgeInsets.all(25), child: Back(label: 'Post Detail')),
             Expanded(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(25)),
-                  color: Colors.white,
-                  boxShadow: colors.boxShadow,
-                ),
+              child: Background(
                 child: PostDetailItem(
                     username: args.username, message: args.message),
               ),

@@ -1,3 +1,4 @@
+import 'package:android_development/widgets/background.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:android_development/constants/color.dart' as colors;
@@ -25,13 +26,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
               child: Back(label: 'Favorites'),
             ),
             Expanded(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(25)),
-                  boxShadow: colors.boxShadow,
-                ),
+              child: Background(
                 child: StreamBuilder<QuerySnapshot>(
                   stream: FirestoreService().getPosts(),
                   builder: (context, snapshot) {

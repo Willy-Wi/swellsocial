@@ -1,6 +1,7 @@
 import 'package:android_development/settings/pages/accounts_page.dart';
 import 'package:android_development/settings/pages/notification_setting_page.dart';
 import 'package:android_development/settings/pages/themes_page.dart';
+import 'package:android_development/widgets/background.dart';
 import 'package:flutter/material.dart';
 import 'package:android_development/constants/color.dart' as colors;
 
@@ -21,12 +22,7 @@ class SettingsPage extends StatelessWidget {
               child: Back(label: 'Settings'),
             ),
             Expanded(
-              child: DecoratedBox(
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius:
-                          const BorderRadius.vertical(top: Radius.circular(25)),
-                      boxShadow: colors.boxShadow),
+              child: Background(
                   child: Padding(
                     padding: const EdgeInsets.only(
                         top: 20.0, left: 25.0, right: 25.0),
