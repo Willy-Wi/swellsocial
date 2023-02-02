@@ -79,30 +79,46 @@ class CustomDialog extends StatelessWidget {
             ),
             const SizedBox(height: 5),
             const Divider(),
-            DialogListTile(
-                icon: 'notification',
-                text: 'Notifications',
-                onTap: () => Navigator.pushNamed(context, '/notification')),
-            DialogListTile(
-                icon: 'like_false',
-                text: 'Favorites',
-                onTap: () {
-                  Navigator.pushNamed(context, '/favorites');
-                }),
-            DialogListTile(
-                icon: 'settings',
-                text: 'Settings',
-                onTap: () {
-                  Navigator.pushNamed(context, '/settings');
-                }),
-            DialogListTile(
-                icon: 'logout',
-                redText: true,
-                text: 'Logout',
-                onTap: () {
-                  Navigator.pop(context);
-                  AuthService().signOut(context);
-                }),
+            Semantics(
+              label: 'Notifactions button',
+              onTapHint: 'Tap To View The Notifications Page',
+              child: DialogListTile(
+                  icon: 'notification',
+                  text: 'Notifications',
+                  onTap: () => Navigator.pushNamed(context, '/notification')),
+            ),
+            Semantics(
+              label: 'Favorites button',
+              onTapHint: 'Tap To View The Favorites Page',
+              child: DialogListTile(
+                  icon: 'like_false',
+                  text: 'Favorites',
+                  onTap: () {
+                    Navigator.pushNamed(context, '/favorites');
+                  }),
+            ),
+            Semantics(
+              label: 'settings button',
+              onTapHint: 'Tap To View The Settings Page',
+              child: DialogListTile(
+                  icon: 'settings',
+                  text: 'Settings',
+                  onTap: () {
+                    Navigator.pushNamed(context, '/settings');
+                  }),
+            ),
+            Semantics(
+              label: 'log out button',
+              onTapHint: 'Tap To Log Out',
+              child: DialogListTile(
+                  icon: 'logout',
+                  redText: true,
+                  text: 'Logout',
+                  onTap: () {
+                    Navigator.pop(context);
+                    AuthService().signOut(context);
+                  }),
+            )
           ],
         ),
       ),

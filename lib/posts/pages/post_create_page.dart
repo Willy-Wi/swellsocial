@@ -1,6 +1,8 @@
+import 'package:android_development/notif.dart';
 import 'package:android_development/posts/models/post_model.dart';
 import 'package:android_development/widgets/background.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import '../../authentication/services/auth.dart';
@@ -21,6 +23,8 @@ class PostCreatePage extends StatefulWidget {
 class _PostCreatePageState extends State<PostCreatePage> {
   TextEditingController messageController = TextEditingController();
 
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
   @override
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
@@ -56,7 +60,10 @@ class _PostCreatePageState extends State<PostCreatePage> {
               );
 
               FirestoreService().addPost(context, postModel.toJson());
-
+              Notif.showNotification(
+                  title: 'SwellSocial',
+                  body: 'You have successfully created a post',
+                  fln: flutterLocalNotificationsPlugin);
               Navigator.pop(context);
             },
             child: SvgPicture.asset('assets/icons/check.svg')),

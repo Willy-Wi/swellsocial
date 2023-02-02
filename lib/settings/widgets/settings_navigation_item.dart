@@ -24,25 +24,28 @@ class SettingsNavigationItem extends StatelessWidget {
     TextStyle textStyle = const TextStyle(color: colors.dark);
     TextTheme textTheme = Theme.of(context).textTheme;
 
-    return ListTile(
-        contentPadding: iconPath == null
-            ? const EdgeInsets.symmetric(horizontal: 10)
-            : EdgeInsets.zero,
-        dense: true,
-        leading: iconPath == null
-            ? null
-            : CircleAvatar(
-                backgroundColor: color,
-                child: SvgPicture.asset(iconPath!,
-                    width: 24, color: colors.white)),
-        title: Text(text, style: textTheme.titleMedium),
-        subtitle: subtitle == null
-            ? null
-            : Text(subtitle!, style: textTheme.labelLarge),
-        trailing: action,
-        onTap: () => page == null
-            ? null
-            : Navigator.push(
-                context, MaterialPageRoute(builder: (context) => page!)));
+    return Semantics(
+        label: '${text} Setting Button',
+        onTapHint: 'tap to open the ${text} settings page',
+        child: ListTile(
+            contentPadding: iconPath == null
+                ? const EdgeInsets.symmetric(horizontal: 10)
+                : EdgeInsets.zero,
+            dense: true,
+            leading: iconPath == null
+                ? null
+                : CircleAvatar(
+                    backgroundColor: color,
+                    child: SvgPicture.asset(iconPath!,
+                        width: 24, color: colors.white)),
+            title: Text(text, style: textTheme.titleMedium),
+            subtitle: subtitle == null
+                ? null
+                : Text(subtitle!, style: textTheme.labelLarge),
+            trailing: action,
+            onTap: () => page == null
+                ? null
+                : Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => page!))));
   }
 }

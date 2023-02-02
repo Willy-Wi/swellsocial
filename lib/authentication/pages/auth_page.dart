@@ -52,18 +52,26 @@ class _AuthPageState extends State<AuthPage> {
             //
             const SizedBox(height: 30),
             //
-            Button(
-              label: 'Login',
-              useAccentColor: true,
-              onTap: () => Navigator.pushNamed(context, '/login'),
+            Semantics(
+              label: 'login button',
+              onTapHint: 'Tap To Login',
+              child: Button(
+                label: 'Login',
+                useAccentColor: true,
+                onTap: () => Navigator.pushNamed(context, '/login'),
+              ),
             ),
             //
             const SizedBox(height: 15),
             //
-            Button(
-              label: 'Sign Up',
-              onTap: () => Navigator.pushNamed(context, '/sign_up'),
-            ),
+            Semantics(
+              label: 'sign up button',
+              onTapHint: 'Tap To Sign Up',
+              child: Button(
+                label: 'Sign Up',
+                onTap: () => Navigator.pushNamed(context, '/sign_up'),
+              ),
+            )
           ],
         ),
       ),

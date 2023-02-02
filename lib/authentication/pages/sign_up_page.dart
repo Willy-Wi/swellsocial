@@ -90,48 +90,71 @@ class _SignUpPageState extends State<SignUpPage> {
                 //
                 const SizedBox(height: 25),
                 //
-                InputField(
-                    controller: emailController,
-                    hintText: 'Email',
-                    iconPath: 'assets/icons/email.svg'),
+                Semantics(
+                  label: 'Email Field',
+                  onTapHint: 'tap to enter your email',
+                  child: InputField(
+                      controller: emailController,
+                      hintText: 'Email',
+                      iconPath: 'assets/icons/email.svg'),
+                ),
+                Semantics(
+                  label: 'Display Name Field',
+                  onTapHint: 'tap to enter your display name',
+                  child: InputField(
+                      controller: usernameController,
+                      hintText: 'Display Name',
+                      iconPath: 'assets/icons/profile.svg'),
+                ),
+                Semantics(
+                  label: 'Password field',
+                  onTapHint: 'tap to enter your password',
+                  child: InputField(
+                      obscureText: true,
+                      controller: passwordController,
+                      hintText: 'Password',
+                      iconPath: 'assets/icons/lock.svg'),
+                ),
+                Semantics(
+                  label: 'Confirm Password field',
+                  onTapHint: 'tap to enter your confirm password',
+                  child: InputField(
+                      obscureText: true,
+                      controller: confirmPasswordController,
+                      hintText: 'Confirm Password',
+                      iconPath: 'assets/icons/lock.svg'),
+                ),
                 //
-                InputField(
-                    controller: usernameController,
-                    hintText: 'Display Name',
-                    iconPath: 'assets/icons/profile.svg'),
                 //
-                InputField(
-                    obscureText: true,
-                    controller: passwordController,
-                    hintText: 'Password',
-                    iconPath: 'assets/icons/lock.svg'),
-                //
-                InputField(
-                    obscureText: true,
-                    controller: confirmPasswordController,
-                    hintText: 'Confirm Password',
-                    iconPath: 'assets/icons/lock.svg'),
                 //
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    style: TextButton.styleFrom(foregroundColor: colors.purple),
-                    onPressed: () =>
-                        Navigator.pushReplacementNamed(context, '/login'),
-                    child: const Text(
-                      'Already have an account?',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                      style:
+                          TextButton.styleFrom(foregroundColor: colors.purple),
+                      onPressed: () =>
+                          Navigator.pushReplacementNamed(context, '/login'),
+                      child: Semantics(
+                        label: 'already have an account?',
+                        onTapHint: 'tap to login',
+                        child: const Text(
+                          'Already have an account?',
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      )),
                 ),
                 //
-                Button(
-                  label: 'Sign Up',
-                  useAccentColor: true,
-                  onTap: () {
-                    signUpAndValidate(context);
-                  },
-                ),
+                Semantics(
+                  label: 'Sign up button',
+                  onTapHint: 'tap to sign up',
+                  child: Button(
+                    label: 'Sign Up',
+                    useAccentColor: true,
+                    onTap: () {
+                      signUpAndValidate(context);
+                    },
+                  ),
+                )
               ],
             ),
           ]),

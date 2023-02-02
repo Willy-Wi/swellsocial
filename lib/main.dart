@@ -1,8 +1,10 @@
+import 'package:android_development/notif.dart';
 import 'package:android_development/posts/pages/post_create_page.dart';
 import 'package:android_development/services/theme_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:android_development/constants/color.dart' as colors;
 import 'package:provider/provider.dart';
@@ -19,6 +21,9 @@ import 'settings/pages/notification_setting_page.dart';
 import 'settings/pages/settings_page.dart';
 import 'notification/pages/notifications_page.dart';
 import 'authentication/pages/auth_page.dart';
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,6 +47,11 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
+  void initState() {
+    super.initState();
+    Notif.initialize(flutterLocalNotificationsPlugin);
+  }
+
   Widget build(BuildContext context) {
     ThemeProvider themeProvider = Provider.of<ThemeProvider>(context);
 

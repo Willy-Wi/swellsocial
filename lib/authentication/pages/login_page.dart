@@ -65,33 +65,50 @@ class _LoginPageState extends State<LoginPage> {
                 //
                 const SizedBox(height: 25),
                 //
-                InputField(
-                    controller: emailController,
-                    hintText: 'Email',
-                    iconPath: 'assets/icons/email.svg'),
+                Semantics(
+                  label: 'Email Field',
+                  onTapHint: 'Tap To Enter Your Email',
+                  child: InputField(
+                      controller: emailController,
+                      hintText: 'Email',
+                      iconPath: 'assets/icons/email.svg'),
+                ),
                 //
-                InputField(
-                    obscureText: true,
-                    controller: passwordController,
-                    hintText: 'Password',
-                    iconPath: 'assets/icons/lock.svg'),
+                Semantics(
+                  label: 'Password Field',
+                  onTapHint: 'Tap To Enter Your Password',
+                  child: InputField(
+                      obscureText: true,
+                      controller: passwordController,
+                      hintText: 'Password',
+                      iconPath: 'assets/icons/lock.svg'),
+                ),
                 //
+
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/sign_up');
-                    },
-                    style: TextButton.styleFrom(foregroundColor: colors.purple),
-                    child: const Text('Don\'t have an account?',
-                        style: TextStyle(fontWeight: FontWeight.w600)),
-                  ),
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/sign_up');
+                      },
+                      style:
+                          TextButton.styleFrom(foregroundColor: colors.purple),
+                      child: Semantics(
+                        label: "Don't have an account?",
+                        onTapHint: "tap to create an account",
+                        child: const Text('Don\'t have an account?',
+                            style: TextStyle(fontWeight: FontWeight.w600)),
+                      )),
                 ),
                 //
-                Button(
-                    label: 'Login',
-                    useAccentColor: true,
-                    onTap: () => login(context)),
+                Semantics(
+                  label: 'Login Button',
+                  onTapHint: 'Tap To Login',
+                  child: Button(
+                      label: 'Login',
+                      useAccentColor: true,
+                      onTap: () => login(context)),
+                )
               ],
             ),
           ]),

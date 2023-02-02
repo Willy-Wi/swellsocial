@@ -1,3 +1,4 @@
+import 'package:android_development/authentication/services/auth.dart';
 import 'package:android_development/widgets/background.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -51,29 +52,36 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CircleAvatar(
-                        backgroundColor: Colors.transparent,
+                    Semantics(
+                      label: 'Swell Social',
+                      child: CircleAvatar(
+                          backgroundColor: Colors.transparent,
+                          radius: 30,
+                          child: Container(
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  boxShadow: colors.greyBoxShadow),
+                              child: Image.asset(
+                                  'assets/logo/swell_social_logo.png'))),
+                    ),
+                    Semantics(
+                      onTapHint: 'Double Tap To Open Navigation Menu',
+                      label: 'Profile',
+                      child: CircleAvatar(
                         radius: 30,
                         child: Container(
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                boxShadow: colors.greyBoxShadow),
-                            child: Image.asset(
-                                'assets/logo/swell_social_logo.png'))),
-                    CircleAvatar(
-                      radius: 30,
-                      child: Container(
-                        decoration: const BoxDecoration(
-                            gradient: colors.purpleGreenGradient,
-                            shape: BoxShape.circle),
-                        child: Material(
-                          color: Colors.transparent,
-                          child: InkWell(
-                            customBorder: const CircleBorder(),
-                            overlayColor: MaterialStateProperty.all(
-                                colors.purpleSplashRipple),
-                            splashColor: colors.purpleSplashRipple,
-                            onTap: () => showNavigationMenu(context),
+                          decoration: const BoxDecoration(
+                              gradient: colors.purpleGreenGradient,
+                              shape: BoxShape.circle),
+                          child: Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              customBorder: const CircleBorder(),
+                              overlayColor: MaterialStateProperty.all(
+                                  colors.purpleSplashRipple),
+                              splashColor: colors.purpleSplashRipple,
+                              onTap: () => showNavigationMenu(context),
+                            ),
                           ),
                         ),
                       ),
@@ -166,7 +174,10 @@ class _HomePageState extends State<HomePage> {
             backgroundColor: themeProvider.isDarkMode ? null : colors.white,
             foregroundColor: colors.purple,
             onPressed: () => Navigator.pushNamed(context, '/post_create'),
-            child: SvgPicture.asset('assets/icons/add_purple.svg')),
+            child: Semantics(
+                label: 'Create Post Button',
+                onTapHint: 'Tap Twice To Create Post',
+                child: SvgPicture.asset('assets/icons/add_purple.svg'))),
       ),
     );
   }
